@@ -37,10 +37,10 @@ tagMessageChannelId = False # Leave False for tags to be sent to the same channe
 
 client = discord.Client()
 
-# Function below borrowed from https://github.com/Alkl58/szurubooru-auto-tagger.
-# No license specified.
 def getTags(url):
 	if useSauceNao == False:
+		# Function below borrowed from https://github.com/Alkl58/szurubooru-auto-tagger.
+		# No license specified.
 		res = requests.get('https://iqdb.org/?url=' + url)
 		soup = BeautifulSoup(res.text, 'html.parser')
 		if(danbooruDefault == True):
