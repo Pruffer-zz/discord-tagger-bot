@@ -33,6 +33,7 @@ danbooruDefault = True # True by default
 
 botToken = # Example: "L1ZszTkJX77WicKA27xNpooTSWqqov8y86rNbDkA"
 serverId = # Example: 123456789123456789
+tagMessageChannelId = False # Leave False for tags to be sent to the same channel as the attachment was posted in
 
 client = discord.Client()
 
@@ -93,6 +94,10 @@ async def on_message(message):
 					description=embedDescription,
 					color=0x0088ff
 				)
-				await message.channel.send(embed=embed)
+				if (tagMessageChannelId == False):
+					tagMessageChannel = message.channel
+				else:
+					tagMessageChannel = client.get_channel(tagMessageChannelId)
+				await tagMessageChannel.send(embed=embed)
 
 client.run(botToken)
